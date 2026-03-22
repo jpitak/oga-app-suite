@@ -1,0 +1,12 @@
+{
+  "name": "oga-international-enterprise-suite",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "install:all": "npm install --workspaces",
+    "dev": "bash scripts/dev.sh",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server"
+  }
+}

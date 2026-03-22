@@ -1,0 +1,21 @@
+services:
+  oga-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: 8080
+      SESSION_SECRET: oga-super-secret-change-me
+      CLIENT_URL: http://localhost:8080
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL:-http://localhost:8080/auth/google/callback}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      DEFAULT_AI_PROVIDER: ${DEFAULT_AI_PROVIDER:-mock}
+    volumes:
+      - oga_data:/app/server/data
+    restart: unless-stopped
+volumes:
+  oga_data:
